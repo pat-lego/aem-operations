@@ -24,7 +24,8 @@ export class AbbottIterator extends IteratorA {
     
     /* eslint @typescript-eslint/no-explicit-any: off */
     shouldOperate(path: string, data: any): boolean {
-        if (path.endsWith("jcr:content") && data["sling:resourceType"] === "wcm/launches/components/launch" && data["sourceRootResource"].includes("corelaboratory")) {
+        if (path.endsWith("jcr:content") && data["sling:resourceType"] === "wcm/launches/components/launch" && 
+                (data["sourceRootResource"].includes("corelaboratory") || path.includes("corelaboratory"))) {
             return true;
         }
         return false
