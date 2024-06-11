@@ -13,6 +13,7 @@ export class AbbottIterator extends IteratorA {
         super(fetcher, config)
     }
 
+    /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars */
     shouldContinue(path: string, data: any): boolean {
         console.log(chalk.blue(`Processing path ${path}`))
         if (path.endsWith("jcr:content") || path.endsWith("rep:policy")) {
@@ -20,7 +21,8 @@ export class AbbottIterator extends IteratorA {
         }
         return true
     }
-
+    
+    /* eslint @typescript-eslint/no-explicit-any: off */
     shouldOperate(path: string, data: any): boolean {
         if (path.endsWith("jcr:content") && data["sling:resourceType"] === "wcm/launches/components/launch" && data["sourceRootResource"].includes("corelaboratory")) {
             return true;

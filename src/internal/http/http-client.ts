@@ -10,7 +10,7 @@ export class DataFetcher {
     }
 
     async post(path: string, body: FormData): Promise<string> {
-        let res = await fetch(`${this.config.authentication.server.host}${path}`, {
+        const res = await fetch(`${this.config.authentication.server.host}${path}`, {
             method: 'POST',
             body: body,
             headers: {
@@ -24,16 +24,15 @@ export class DataFetcher {
         throw new Error(`Request to ${path} with response code ${res.status}`)
     }
 
+    /* eslint @typescript-eslint/no-explicit-any: off */
     async get(path?: string): Promise<any> {
-        let res
-
         if (path) {
             path = `${this.config.authentication.server.host}${path}`
         } else {
             path = `${this.config.authentication.server.host}${this.config.operation.root}`
         }
 
-        res = await fetch(path, {
+        const res = await fetch(path, {
             headers: {
                 'Authorization': 'Basic ' + this.getBase64Encoded(`${this.config.authentication.credentials.username}:${this.config.authentication.credentials.password}`)
             }

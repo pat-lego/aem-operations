@@ -3,6 +3,7 @@ import { Config } from "../../config.js"
 import { DataFetcher } from "../http/http-client.js"
 
 export abstract class IteratorA {
+    /* eslint @typescript-eslint/no-explicit-any: off */
     abstract shouldContinue(path: string, data: any): boolean
     abstract shouldOperate(path: string, data: any): boolean
     abstract operate(path:string): Promise<void>

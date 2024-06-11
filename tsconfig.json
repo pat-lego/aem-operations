@@ -8,6 +8,9 @@
         "outDir": "target",
         "allowJs": true
     },
+    "include": [
+        "./**/*"
+    ],
     "lib": [
         "es2021"
     ]

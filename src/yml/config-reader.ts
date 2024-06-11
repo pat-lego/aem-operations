@@ -5,6 +5,7 @@ import { Config, ConfigI } from '../config.js'
 import { Authentication } from '../authentication.js'
 
 export class ConfigReader {
+    /* eslint @typescript-eslint/no-explicit-any: off */
     yaml: any
 
     constructor(configFile: string) {
