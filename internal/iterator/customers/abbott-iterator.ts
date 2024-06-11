@@ -29,7 +29,7 @@ export class AbbottIterator extends IteratorA {
         path = path.replace("/jcr:content", "")
 
         console.log(`About to delete path ${path}`)
-        this.client.post(path, ":operation=delete")
+        //this.client.post(path, ":operation=delete")
         console.log(`Deleted path ${path}`)
     }
 

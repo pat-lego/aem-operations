@@ -2,8 +2,9 @@ import { DataFetcher } from "./internal/http/http-client";
 import { IteratorManager } from "./internal/iterator/iterator-manager";
 import { ConfigReader } from "./yml/config-reader";
 
-const main = async () => {
+const main = async (args: string[]) => {
     console.log(`Config file initizializing`)
+    const configFilePath = getConfigFilePath(args)
     const configReader = new ConfigReader("/Users/patriquelegault/Desktop/datafile.yml")
     const config = configReader.getConfig()
     console.log(`Config file initialized`)
@@ -16,4 +17,12 @@ const main = async () => {
     console.log(`Completed process on server ${config.authentication.server.host}`)
 }
 
-main()
+const getConfigFilePath = (args: string[]): string =>  {
+    const result = args[2]
+    if (result) {
+        return result
+    }
+    throw new Error('Missing config file path in the arguments for the command line')
+}
+
+main(process.argv)
