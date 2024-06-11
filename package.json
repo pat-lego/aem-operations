@@ -1,7 +1,7 @@
 {
-  "name": "com.adobe.aem.support.node.remover",
+  "name": "com.adobe.aem.support.node.operations",
   "version": "1.0.0",
-  "description": "A utility to delete nodes using Sling POST Servlet",
+  "description": "A utility to operate on nodes",
   "exports": "./index.js",
   "type": "module",
   "scripts": {
