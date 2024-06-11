@@ -1,10 +1,11 @@
-import { Config } from "../../config"
-import { DataFetcher } from "../http/http-client"
+import chalk from "chalk"
+import { Config } from "../../config.js"
+import { DataFetcher } from "../http/http-client.js"
 
 export abstract class IteratorA {
     abstract shouldContinue(path: string, data: any): boolean
     abstract shouldOperate(path: string, data: any): boolean
-    abstract operate(path:string): void
+    abstract operate(path:string): Promise<void>
     abstract getName(): string
 
     client: DataFetcher
@@ -23,7 +24,7 @@ export abstract class IteratorA {
             }
             data = await this.client.get(`${path}.1.json`)
         } catch (e) {
-            console.error(`Failed to get data for path ${path}`)
+            console.error(chalk.red(`Failed to get data for path ${path}`))
             throw e
         }
 
@@ -35,7 +36,7 @@ export abstract class IteratorA {
 
         if (this.shouldOperate(path, data)) {
             paths.push(path)
-            this.operate(path)
+            await this.operate(path)
         }
 
         return paths

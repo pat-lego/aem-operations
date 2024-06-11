@@ -1,7 +1,7 @@
-import { ConfigI } from "../../config"
-import { DataFetcher } from "../http/http-client"
-import { IteratorA } from "./iterator"
-import { AbbottIterator } from "./customers/abbott-iterator"
+import { ConfigI } from "../../config.js"
+import { DataFetcher } from "../http/http-client.js"
+import { IteratorA } from "./iterator.js"
+import { AbbottIterator } from "./customers/abbott-iterator.js"
 
 export class IteratorManager {
     iterators: IteratorA[] = []

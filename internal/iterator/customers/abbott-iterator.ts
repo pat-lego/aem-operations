@@ -1,6 +1,8 @@
-import { Config } from "../../../config";
-import { DataFetcher } from "../../http/http-client";
-import { IteratorA } from "../iterator";
+import chalk from 'chalk'
+import FormData from 'form-data'
+import { Config } from "../../../config.js"
+import { DataFetcher } from "../../http/http-client.js"
+import { IteratorA } from "../iterator.js"
 
 export class AbbottIterator extends IteratorA {
 
@@ -12,6 +14,7 @@ export class AbbottIterator extends IteratorA {
     }
 
     shouldContinue(path: string, data: any): boolean {
+        console.log(chalk.blue(`Processing path ${path}`))
         if (path.endsWith("jcr:content") || path.endsWith("rep:policy")) {
             return false
         }
@@ -25,12 +28,14 @@ export class AbbottIterator extends IteratorA {
         return false
     }
 
-    operate(path: string): void {
+    async operate(path: string): Promise<void> {
         path = path.replace("/jcr:content", "")
 
-        console.log(`About to delete path ${path}`)
-        //this.client.post(path, ":operation=delete")
-        console.log(`Deleted path ${path}`)
+        console.log(chalk.yellow(`About to delete path ${path}`))
+        const formData = new FormData()
+        formData.append(":operation", "delete")
+        await this.client.post(path, formData)
+        console.log(chalk.yellow(`Deleted path ${path}`))
     }
 
     getName(): string {

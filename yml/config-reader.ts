@@ -1,8 +1,8 @@
 import fs from 'fs'
 import yaml from 'yaml'
-import { Operation } from '../operation'
-import { Config, ConfigI } from '../config'
-import { Authentication } from '../authentication'
+import { Operation } from '../operation.js'
+import { Config, ConfigI } from '../config.js'
+import { Authentication } from '../authentication.js'
 
 export class ConfigReader {
     yaml: any

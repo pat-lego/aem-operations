@@ -2,7 +2,9 @@
   "name": "com.adobe.aem.support.node.remover",
   "version": "1.0.0",
   "description": "A utility to delete nodes using Sling POST Servlet",
-  "main": "index.ts",
+  "exports": "./index.js",
+  "type": "module",
+  "engines": ">=18",
   "scripts": {
     "build": "tsc",
     "lint": "eslint . --ext .ts",
@@ -17,11 +19,12 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.14.2",
+    "@types/node-fetch": "^2.6.11",
     "eslint": "^9.4.0",
-    "typescript": "^5.4.5",
-    "@types/node-fetch": "^2.6.11"
+    "typescript": "^5.4.5"
   },
   "dependencies": {
+    "chalk": "^5.3.0",
     "node-fetch": "^2.6.11",
     "yaml": "^2.4.5"
   }

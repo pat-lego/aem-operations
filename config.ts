@@ -1,5 +1,5 @@
-import { OperationI } from './operation'
-import { AuthenticationI } from './authentication'
+import { OperationI } from './operation.js'
+import { AuthenticationI } from './authentication.js'
 
 export class Config implements ConfigI {
     operation: OperationI

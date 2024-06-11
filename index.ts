@@ -1,20 +1,21 @@
-import { DataFetcher } from "./internal/http/http-client";
-import { IteratorManager } from "./internal/iterator/iterator-manager";
-import { ConfigReader } from "./yml/config-reader";
+import chalk from "chalk";
+import { DataFetcher } from "./internal/http/http-client.js"
+import { IteratorManager } from "./internal/iterator/iterator-manager.js"
+import { ConfigReader } from "./yml/config-reader.js"
 
 const main = async (args: string[]) => {
-    console.log(`Config file initizializing`)
+    console.log(chalk.green(`Config file initizializing`))
     const configFilePath = getConfigFilePath(args)
     const configReader = new ConfigReader("/Users/patriquelegault/Desktop/datafile.yml")
     const config = configReader.getConfig()
-    console.log(`Config file initialized`)
+    console.log(chalk.green(`Config file initialized`))
 
-    console.log(`Starting process on server ${config.authentication.server.host}`)
+    console.log(chalk.green(`Starting process on server ${config.authentication.server.host}`))
     const fetcher = new DataFetcher(config)
     let paths: string[] = []
     const iterator = new IteratorManager(config).getIterator(config.operation.itereator)
     paths = await iterator.iterate(paths)
-    console.log(`Completed process on server ${config.authentication.server.host}`)
+    console.log(chalk.green(`Completed process on server ${config.authentication.server.host}`))
 }
 
 const getConfigFilePath = (args: string[]): string =>  {

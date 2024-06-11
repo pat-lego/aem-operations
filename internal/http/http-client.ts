@@ -1,5 +1,6 @@
-import { ConfigI } from "../../config";
+import { ConfigI } from "../../config.js";
 import fetch from "node-fetch";
+import FormData from 'form-data'
 
 export class DataFetcher {
     config: ConfigI
@@ -8,8 +9,8 @@ export class DataFetcher {
         this.config = config
     }
 
-    async post(path: string, body: string): Promise<string> {
-        let res = await fetch(path, {
+    async post(path: string, body: FormData): Promise<string> {
+        let res = await fetch(`${this.config.authentication.server.host}${path}`, {
             method: 'POST',
             body: body,
             headers: {
