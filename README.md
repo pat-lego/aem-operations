@@ -31,3 +31,7 @@ authentication:
     username: "admin"
     password: "PASSWORD"
 ```
+
+# How to run
+
+  node target/index.js PATH_TO_CONFIG.yml
