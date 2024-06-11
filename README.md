@@ -32,6 +32,10 @@ authentication:
     password: "PASSWORD"
 ```
 
+# How to build
+
+  npm run build
+
 # How to run
 
   node target/index.js PATH_TO_CONFIG.yml
