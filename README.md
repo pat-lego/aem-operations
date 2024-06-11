@@ -34,8 +34,8 @@ authentication:
 
 # How to build
 
-  npm run build
+    npm run build
 
 # How to run
 
-  node target/index.js PATH_TO_CONFIG.yml
+    node target/index.js PATH_TO_CONFIG.yml
