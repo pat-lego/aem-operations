@@ -16,7 +16,7 @@ export class AbbottIterator extends IteratorA {
     /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars */
     shouldContinue(path: string, data: any): boolean {
         console.log(chalk.blue(`Processing path ${path}`))
-        if (path.endsWith("jcr:content") || path.endsWith("rep:policy")) {
+        if (path.endsWith("jcr:content") || path.endsWith("rep:policy")|| path.endsWith("jcr:mixinTypes")) {
             return false
         }
         return true
