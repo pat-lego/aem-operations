@@ -17,6 +17,13 @@ export abstract class IteratorA {
         this.config = config
     }
 
+    async invoke(): Promise<void> {
+        const paths: string[] = await this.iterate([])
+        for (const p of paths) {
+            this.operate(p)
+        }
+    }
+
     async iterate(paths: string[], path?: string): Promise<string[]> {
         let data: any
         try {
@@ -30,14 +37,14 @@ export abstract class IteratorA {
         }
 
         for (const key in data) {
-            if (data[key] instanceof Object && this.shouldContinue(path, data[key])) {
+            if (data[key] instanceof Object && this.shouldContinue(path, data)) {
                 paths = await this.iterate(paths,`${path}/${key}`)
             }
         }
 
         if (this.shouldOperate(path, data)) {
             paths.push(path)
-            await this.operate(path)
+            //await this.operate(path)
         }
 
         return paths

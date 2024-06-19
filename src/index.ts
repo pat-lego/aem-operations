@@ -11,7 +11,7 @@ const main = async (args: string[]) => {
 
     console.log(chalk.green(`Starting process on server ${config.authentication.server.host}`))
     const iterator = new IteratorManager(config).getIterator(config.operation.itereator)
-    await iterator.iterate([])
+    await iterator.invoke()
     console.log(chalk.green(`Completed process on server ${config.authentication.server.host}`))
 }
 
